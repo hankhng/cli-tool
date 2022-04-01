@@ -62,6 +62,20 @@ async function question1() {
   return handleAnswer(answers.question1 == '10 Days');
 }
 
+async function question2() {
+  const answers = await inquirer.prompt({
+    name: 'question2',
+    type: 'list',
+    message: 'Does Ramin Suck? \n',
+    choices: [
+      'Yes',
+      'No'
+      ],
+  });
+
+  return handleAnswer(answers.question2 == 'Yes');
+}
+
 async function handleAnswer(isCorrect) {
   const spinner = createSpinner ('Checking answer...').start();
   await sleep(1000);
@@ -83,12 +97,8 @@ async function winner() {
   });
 }
 
-
-
-
-
-
-// await welcome();
-// await askName();
-// await question1();
+await welcome();
+await askName();
+await question1();
+await question2();
 await winner();
